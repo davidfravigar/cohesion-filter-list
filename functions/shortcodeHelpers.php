@@ -14,4 +14,14 @@ class cofl_shortcodeHelpers
 		$postTypes = array_merge($postTypes, get_post_types($args, $output, $operator));
 		return $postTypes;
 	}
+
+	public static function cofl_extractShortCodeAtts($atts)
+	{
+		return shortcode_atts(array(
+			'post_type'							=> 'posts',
+			'amount'								=> '10',
+			'included_categories'		=> '',
+			'excluded_categories'		=> '',
+		), $atts);
+	}
 }

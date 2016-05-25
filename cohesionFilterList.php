@@ -79,10 +79,8 @@ class FilterList
 		if(is_plugin_active('js_composer_theme/js_composer.php')) {
 			require_once(FILTERLIST_FUNCTIONS_DIR . '/shortcodeHelpers.php');
 			add_action('vc_before_init', array($this, 'cofl_registerVisualComposerShortcode'));
-		} else {
-			add_shortcode('filter_list', array($this, 'cofl_filterList'));
-			//add info page.
 		}
+		add_shortcode('filter_list', array($this, 'cofl_filterList'));
 	}
 
 	/**
@@ -94,7 +92,7 @@ class FilterList
 	{
 		vc_map(array(
 			'name'					=> __('Filter List', 'cohesion'),
-			'base'					=> 'cofl_filterList',
+			'base'					=> 'filter_list',
 			'category' 			=> __('Cohesion', 'cohesion'),
 			'params' => array(
 				array(
@@ -129,7 +127,7 @@ class FilterList
 					'holder' 			=> 'div',
   				'class' 			=> '',
 					'heading' 		=> __('Categories to exclude', 'cohesion'),
-					'param_name' 	=> 'included_categories',
+					'param_name' 	=> 'excluded_categories',
 					'value'				=> '',
 					'description' => __('Enter the categories you do not want to display, separated with a comma', 'cohesion'),
 				),
@@ -142,7 +140,7 @@ class FilterList
 	 *
 	 * ---------------------------------------------------------------------------
 	 */
-	public function cofl_enqueueMedia()
+	public function cofl_enqeueMedia()
 	{
 
 	}
@@ -154,7 +152,7 @@ class FilterList
 	 */
 	public function cofl_filterList($atts, $content = null)
 	{
-		
+		//extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
 	}//end filterList
 }//end class
 

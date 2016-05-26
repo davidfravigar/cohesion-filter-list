@@ -1,0 +1,32 @@
+@mixin button($selector, $defaultSkin:true) {
+
+	#{$selector} {
+		padding: 10px 20px;
+		margin-right: 10px;
+	}
+
+	#{$selector}:hover {
+    cursor: pointer;
+  }
+
+	@if $defaultSkin != false {
+    @include button-skin-default($selector);
+  }
+}
+
+@mixin button-skin-default($selector) {
+
+  #{$selector} {
+		color: white;
+		border: none;
+		background: #2DC7FF;
+		border-radius: 3px;
+		font-size: 1.2em;
+  }
+
+
+  #{$selector}:hover {
+    background: #8EA604;
+  }
+
+}

@@ -46,6 +46,7 @@ class FilterList
 	{
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php');
 		$this->cofl_constants();
+		$this->cofl_includes();
 		$this->cofl_addShortcode();
 		add_action('wp_enqueue_scripts', array($this, 'cofl_enqeueMedia'));
 	}//end constructor
@@ -62,7 +63,7 @@ class FilterList
 		define('FILTERLIST_VIEWS_DIR',FILTERLIST_DIR . 'views');
 
 		define('FILTERLIST_URL', plugin_dir_url(__FILE__));
-		define('FILTERLIST_ASSETS_PATH', FILTERLIST_URL . 'assets');
+		define('FILTERLIST_ASSETS_URL', FILTERLIST_URL . 'assets');
 	}
 
 	/**
@@ -79,8 +80,15 @@ class FilterList
 		if(is_plugin_active('js_composer_theme/js_composer.php')) {
 			require_once(FILTERLIST_FUNCTIONS_DIR . '/shortcodeHelpers.php');
 			add_action('vc_before_init', array($this, 'cofl_registerVisualComposerShortcode'));
+		} else {
+			//register settings page.
 		}
 		add_shortcode('filter_list', array($this, 'cofl_filterList'));
+	}
+
+	public function cofl_includes()
+	{
+		require_once(FILTERLIST_FUNCTIONS_DIR . '/generalFunctions.php');
 	}
 
 	/**
@@ -101,7 +109,7 @@ class FilterList
   				'class' 			=> '',
 					'heading' 		=> __('Post Type', 'cohesion'),
 					'param_name' 	=> 'post_type',
-					'value'				=> cofl_shortcodeHelpers::getPostTypes(),
+					'value'				=> cofl_shortcodeHelpers::cofl_getPostTypes(),
 					'description' => __('Select the post type to display in this element', 'cohesion'),
 				),
 				array(
@@ -109,9 +117,18 @@ class FilterList
 					'holder' 			=> 'div',
   				'class' 			=> '',
 					'heading' 		=> __('Number of entries to show', 'cohesion'),
-					'param_name' 	=> 'amount',
+					'param_name' 	=> 'max',
 					'value'				=> '10',
 					'description' => __('Select the amount of entries to display', 'cohesion'),
+				),
+				array(
+					'type'				=> 'textfield',
+					'holder' 			=> 'div',
+  				'class' 			=> '',
+					'heading' 		=> __('Number of entries to offset', 'cohesion'),
+					'param_name' 	=> 'offset',
+					'value'				=> '',
+					'description' => __('Select the amount of entries to offset', 'cohesion'),
 				),
 				array(
 					'type'				=> 'textfield',
@@ -137,22 +154,46 @@ class FilterList
 
 	/**
 	 * ---------------------------------------------------------------------------
-	 *
+	 * Enqueue Scripts and styles
+	 * ---------------------------------------------------------------------------
+	 * This filter list depends on isotope.js we will use a CDN for this, a falllback
+	 * does need to be included though.
+	 * @todo 		create fallback.
 	 * ---------------------------------------------------------------------------
 	 */
 	public function cofl_enqeueMedia()
 	{
-
+		 wp_enqueue_script('isotope.js', FILTERLIST_ASSETS_URL . '/js/libs/isotope.pkgd.min.js', array('jquery'),'3.0.0', true );
+		 wp_enqueue_style('filterList.css', FILTERLIST_ASSETS_URL . '/css/filterList.css', '', '', 'all', 18);
 	}
 
 	/**
 	 * ---------------------------------------------------------------------------
 	 * Shortcode function
 	 * ---------------------------------------------------------------------------
+	 * This is our shortcode call back function. This is what will be outputted to
+	 * the frontend.
+	 * ---------------------------------------------------------------------------
 	 */
 	public function cofl_filterList($atts, $content = null)
 	{
-		//extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
+		$out = '';
+		extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
+		$filters = cofl_shortcodeHelpers::cofl_getFilterList($included_categories, $post_type);
+		$query = cofl_shortcodeHelpers::cofl_getFilterQuery($atts);
+		if($query->have_posts()) {
+			?>
+				<div class="filter-collection">
+					<div class="filter-colloction__inner">
+					<?php require_once(FILTERLIST_VIEWS_DIR . '/isotope-filter.php'); ?>
+					</div>
+				</div>
+			<?php
+
+
+			while ( $query->have_posts() ) : $query->the_post();
+			endwhile;
+		}
 	}//end filterList
 }//end class
 

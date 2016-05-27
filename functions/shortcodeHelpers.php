@@ -64,19 +64,22 @@ class cofl_shortcodeHelpers
 	 */
 	private static function getPostTypeTerms($postType='post', $fields='all')
 	{
-		$query = self::cofl_getPostTypes($postType);
+		$query = self::cofl_fetchPosts($postType);
 		$terms = array();
 		if($query->have_posts()) {
-			while ($query->have_posts()){
-        $query->the_post();
-       	$postTerms = wp_get_object_terms($post->ID, $taxonomy);
+			while ( $query->have_posts() ) : $query->the_post();
+       	$postTerms = wp_get_object_terms(get_the_ID(), 'category');
        	foreach ($postTerms as $term){
           //avoid duplicates
-          if (!in_array($term,$terms)){
-              $terms[] = $term;
+          if (!in_array($term->name,$terms)){
+          		$termInfo = array(
+								'id'			=> $term->term_id,
+								'name'		=> $term->name,
+							);
+              $terms[$term->name] = $termInfo;
           }
         }
-     	}
+     	endwhile;
 		}
 
 		return $terms;
@@ -87,7 +90,7 @@ class cofl_shortcodeHelpers
 	 *
 	 * -----------------------------------------------------------------------------------------------
 	 */
-	public static function cofl_getFilterList($incTerms, $postType)
+	public static function cofl_getFilterList($incTerms='', $postType='post')
 	{
 		$termsList = array();
 		if(!empty($incTerms)) {
@@ -98,17 +101,12 @@ class cofl_shortcodeHelpers
 						'id'			=> $termObject->term_id,
 						'name'		=> $termObject->name,
 					);
-				$termsList[] = $termInfo;
+				$termsList[$termObject->name] = $termInfo;
 			}
-		} else if ($postType !== 'post' && empty($incTerms)) {
-			//$query = self::cofl_getPostTypes($postType);
-			//if($query->have_posts()) {
-
-			//}
 		} else {
-			//$terms = get_categories(array('orderby' => 'name', 'order' => 'ASC'));
+			$termsList = self::getPostTypeTerms($postType);
 		}
-		return arrayToObject($termsList);
+		return $termsList;
 	}
 
 	/**
@@ -128,7 +126,21 @@ class cofl_shortcodeHelpers
 			'offset'								=> '',
 			'included_categories'		=> '',
 			'excluded_categories'		=> '',
+			'columns'								=> '3',
+			'style'									=> 'flat'
 		), $atts);
+	}
+
+	public static function cofl_getPostTerms($id)
+	{
+		$categories = wp_get_post_categories($id);
+		$cats = array();
+		foreach($categories as $category){
+		    $cat = get_category($category);
+		    $cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+		}
+
+		return arrayToObject($cats);
 	}
 
 	/**

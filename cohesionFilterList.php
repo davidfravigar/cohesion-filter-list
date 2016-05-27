@@ -89,6 +89,7 @@ class FilterList
 	public function cofl_includes()
 	{
 		require_once(FILTERLIST_FUNCTIONS_DIR . '/generalFunctions.php');
+		require_once(FILTERLIST_FUNCTIONS_DIR .'/BFI_Thumb.php');
 	}
 
 	/**
@@ -111,6 +112,7 @@ class FilterList
 					'param_name' 	=> 'post_type',
 					'value'				=> cofl_shortcodeHelpers::cofl_getPostTypes(),
 					'description' => __('Select the post type to display in this element', 'cohesion'),
+					'group'				=> 'Query',
 				),
 				array(
 					'type'				=> 'textfield',
@@ -120,6 +122,7 @@ class FilterList
 					'param_name' 	=> 'max',
 					'value'				=> '10',
 					'description' => __('Select the amount of entries to display', 'cohesion'),
+					'group'				=> 'Query',
 				),
 				array(
 					'type'				=> 'textfield',
@@ -129,6 +132,7 @@ class FilterList
 					'param_name' 	=> 'offset',
 					'value'				=> '',
 					'description' => __('Select the amount of entries to offset', 'cohesion'),
+					'group'				=> 'Query',
 				),
 				array(
 					'type'				=> 'textfield',
@@ -138,6 +142,7 @@ class FilterList
 					'param_name' 	=> 'included_categories',
 					'value'				=> '',
 					'description' => __('Enter the categories you would like to display, separated with a comma. If left blank all categories will be used', 'cohesion'),
+					'group'				=> 'Query',
 				),
 				array(
 					'type'				=> 'textfield',
@@ -147,6 +152,27 @@ class FilterList
 					'param_name' 	=> 'excluded_categories',
 					'value'				=> '',
 					'description' => __('Enter the categories you do not want to display, separated with a comma', 'cohesion'),
+					'group'				=> 'Query',
+				),
+				array(
+					'type'				=> 'dropdown',
+					'holder' 			=> 'div',
+  				'class' 			=> '',
+					'heading' 		=> __('Columns', 'cohesion'),
+					'param_name' 	=> 'columns',
+					'value'				=> array('1' => 1, '2'  => 2, '3' => 3, '4' => 4),
+					'description' => __('', 'cohesion'),
+					'group'				=> 'Appearance',
+				),
+				array(
+					'type'				=> 'dropdown',
+					'holder' 			=> 'div',
+  				'class' 			=> '',
+					'heading' 		=> __('Style', 'cohesion'),
+					'param_name' 	=> 'style',
+					'value'				=> array('Flat' => 'flat', 'Modern' => 'modern'),
+					'description' => __('', 'cohesion'),
+					'group'				=> 'Appearance',
 				),
 			)
 		));
@@ -164,7 +190,9 @@ class FilterList
 	public function cofl_enqeueMedia()
 	{
 		 wp_enqueue_script('isotope.js', FILTERLIST_ASSETS_URL . '/js/libs/isotope.pkgd.min.js', array('jquery'),'3.0.0', true );
+		  wp_enqueue_script('filterList.js', FILTERLIST_ASSETS_URL . '/js/filterList.js', array('jquery'),'1.0.0', true );
 		 wp_enqueue_style('filterList.css', FILTERLIST_ASSETS_URL . '/css/filterList.css', '', '', 'all', 18);
+		 wp_enqueue_script('fontawesome.js', 'https://use.fontawesome.com/331b945e54.js', array(),'');
 	}
 
 	/**
@@ -179,20 +207,24 @@ class FilterList
 	{
 		$out = '';
 		extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
-		$filters = cofl_shortcodeHelpers::cofl_getFilterList($included_categories, $post_type);
+		$filterList = cofl_shortcodeHelpers::cofl_getFilterList($included_categories, $post_type);
+		$filters = arrayToObject($filterList);
 		$query = cofl_shortcodeHelpers::cofl_getFilterQuery($atts);
 		if($query->have_posts()) {
 			?>
 				<div class="filter-collection">
 					<div class="filter-colloction__inner">
-					<?php require_once(FILTERLIST_VIEWS_DIR . '/isotope-filter.php'); ?>
+						<?php require_once(FILTERLIST_VIEWS_DIR . '/isotope-filter.php'); ?>
+						<div class="js-filter-list filter-list">
+							<?php
+								while ( $query->have_posts() ) : $query->the_post();
+									include(FILTERLIST_VIEWS_DIR . '/item-'.$style.'.php');
+								endwhile;
+							?>
+						</div>
 					</div>
 				</div>
 			<?php
-
-
-			while ( $query->have_posts() ) : $query->the_post();
-			endwhile;
 		}
 	}//end filterList
 }//end class

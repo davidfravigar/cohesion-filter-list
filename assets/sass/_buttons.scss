@@ -3,6 +3,7 @@
 	#{$selector} {
 		padding: 10px 20px;
 		margin-right: 10px;
+		margin-bottom: 10px;
 	}
 
 	#{$selector}:hover {
@@ -17,16 +18,19 @@
 @mixin button-skin-default($selector) {
 
   #{$selector} {
-		color: white;
-		border: none;
-		background: #2DC7FF;
+		color: #333;
+		border: 1px solid #333;
+		font-weight: bold;
+		background: transparent;
 		border-radius: 3px;
 		font-size: 1.2em;
   }
 
 
   #{$selector}:hover {
-    background: #8EA604;
+    background: #2DC7FF;
+    border: 1px solid #2DC7FF;
+    color: white;
   }
 
 }

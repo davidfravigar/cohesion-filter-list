@@ -161,7 +161,7 @@ class FilterList
 					'heading' 		=> __('Columns', 'cohesion'),
 					'param_name' 	=> 'columns',
 					'value'				=> array('1' => 1, '2'  => 2, '3' => 3, '4' => 4),
-					'description' => __('', 'cohesion'),
+					'description' => __('Select how many items to display per row', 'cohesion'),
 					'group'				=> 'Appearance',
 				),
 				array(
@@ -171,8 +171,19 @@ class FilterList
 					'heading' 		=> __('Style', 'cohesion'),
 					'param_name' 	=> 'style',
 					'value'				=> array('Flat' => 'flat', 'Modern' => 'modern'),
-					'description' => __('', 'cohesion'),
+					'description' => __('Select what syle of Filter List you would like to display.', 'cohesion'),
 					'group'				=> 'Appearance',
+				),
+				array(
+					'type'				=> 'dropdown',
+					'holder' 			=> 'div',
+  				'class' 			=> '',
+					'heading' 		=> __('Alignment', 'cohesion'),
+					'param_name' 	=> 'alignment',
+					'value'				=> array('Left' => 'left', 'Bottom' => 'bottom', 'Cover' => 'cover'),
+					'description' => __('Select the alignment for this elements animation', 'cohesion'),
+					'group'				=> 'Appearance',
+					'dependency'	=> array('element' => 'style','value' =>'modern'),
 				),
 			)
 		));
@@ -218,7 +229,8 @@ class FilterList
 						<div class="js-filter-list filter-list">
 							<?php
 								while ( $query->have_posts() ) : $query->the_post();
-									include(FILTERLIST_VIEWS_DIR . '/item-'.$style.'.php');
+									//include(FILTERLIST_VIEWS_DIR . '/item-'.$style.'.php');
+									include(FILTERLIST_VIEWS_DIR . '/item.php');
 								endwhile;
 							?>
 						</div>

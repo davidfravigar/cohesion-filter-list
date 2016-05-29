@@ -90,7 +90,7 @@ class cofl_shortcodeHelpers
 	 *
 	 * -----------------------------------------------------------------------------------------------
 	 */
-	public static function cofl_getFilterList($incTerms='', $postType='post')
+	public static function cofl_getFilterList($incTerms='', $excludedTerms='', $postType='post')
 	{
 		$termsList = array();
 		if(!empty($incTerms)) {
@@ -127,7 +127,8 @@ class cofl_shortcodeHelpers
 			'included_categories'		=> '',
 			'excluded_categories'		=> '',
 			'columns'								=> '3',
-			'style'									=> 'flat'
+			'style'									=> 'flat',
+			'alignment'							=> 'left',
 		), $atts);
 	}
 

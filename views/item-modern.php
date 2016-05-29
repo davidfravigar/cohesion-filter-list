@@ -24,7 +24,7 @@ $categories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
 		<ul class="inline-list">
 			<?php
 				foreach($categories as $category) {
-					if(array_key_exists($category->name, $filterList)) {//in_array('egg', $array, true)
+					if(array_key_exists($category->name, $filterList)) {
 						echo '<li claass="inline-list--item">'.$category->name . '</li>';
 					}
 				}

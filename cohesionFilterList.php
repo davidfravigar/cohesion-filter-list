@@ -1,8 +1,8 @@
 <?php
 /**
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  * Wordpress Stuff
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  * Plugin Name: 	Filter List
  * Plugin URI: 		http://davidfravigar.com/
  * Description: 	A Shortcode for displaying a post filter
@@ -10,37 +10,37 @@
  * Author: 				David Fravigar
  * Author URI: 		http://davidfravigar.com/
  * License: 			MIT
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  * Developer Stuff
- * -----------------------------------------------------------------------------
- * Filter posts using Ajax and magic.
+ * -------------------------------------------------------------------------------------------------
+ * Filter posts using Ajax and magic. The shortcode itself is compatible with visual composer. If no
+ * visual composer is found then a plain old shortcode will be used.
  *
  * @author 		David Fravigar
  * @version 	0.0.1
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  */
 
 /**
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  * Stop Direct Access
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  */
 if (!defined('ABSPATH')) {
   die('This is not the script you are looking for.... move along');
 }
 
+/**
+ * -------------------------------------------------------------------------------------------------
+ * The class
+ * -------------------------------------------------------------------------------------------------
+ */
 class FilterList
 {
 	/**
-	 * ---------------------------------------------------------------------------
-	 * Vars
-	 * ---------------------------------------------------------------------------
-	 */
-
-	/**
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
 	 * Constructor
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
 	 */
 	function __construct()
 	{
@@ -52,9 +52,11 @@ class FilterList
 	}//end constructor
 
 	/**
-	 * ---------------------------------------------------------------------------
-	 *
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
+	 * Constants
+	 * -----------------------------------------------------------------------------------------------
+	 * Plugin constants and paths.
+	 * -----------------------------------------------------------------------------------------------
 	 */
 	function cofl_constants()
 	{
@@ -65,27 +67,11 @@ class FilterList
 		define('FILTERLIST_URL', plugin_dir_url(__FILE__));
 		define('FILTERLIST_ASSETS_URL', FILTERLIST_URL . 'assets');
 	}
-
 	/**
-	 * ---------------------------------------------------------------------------
-	 * add shortcode function
-	 * ---------------------------------------------------------------------------
-	 * This function checks to see if the Visual Composer theme is present. If it
-	 * is the shortcode is registered to work with visual composer, if not a plain
-	 * old Wordpress shortcode is used.
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
+	 * Plugin includes
+	 * -----------------------------------------------------------------------------------------------
 	 */
-	public function cofl_addShortcode()
-	{
-		if(is_plugin_active('js_composer_theme/js_composer.php')) {
-			require_once(FILTERLIST_FUNCTIONS_DIR . '/shortcodeHelpers.php');
-			add_action('vc_before_init', array($this, 'cofl_registerVisualComposerShortcode'));
-		} else {
-			//register settings page.
-		}
-		add_shortcode('filter_list', array($this, 'cofl_filterList'));
-	}
-
 	public function cofl_includes()
 	{
 		require_once(FILTERLIST_FUNCTIONS_DIR . '/generalFunctions.php');
@@ -93,9 +79,27 @@ class FilterList
 	}
 
 	/**
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
+	 * add shortcode function
+	 * -----------------------------------------------------------------------------------------------
+	 * This function checks to see if the Visual Composer theme is present. If it is the shortcode is
+	 * registered to work with visual composer, if not a plain old Wordpress shortcode is used.
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	public function cofl_addShortcode()
+	{
+		if(is_plugin_active('js_composer_theme/js_composer.php')) {
+			require_once(FILTERLIST_FUNCTIONS_DIR . '/shortcodeHelpers.php');
+			add_action('vc_before_init', array($this, 'cofl_registerVisualComposerShortcode'));
+		}
+		add_action('admin_menu', array($this, 'cofl_pluginMenu'));
+		add_shortcode('filter_list', array($this, 'cofl_filterList'));
+	}
+
+	/**
+	 * -----------------------------------------------------------------------------------------------
 	 * Visual composer mapper function
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
 	 */
 	function cofl_registerVisualComposerShortcode()
 	{
@@ -190,13 +194,52 @@ class FilterList
 	}
 
 	/**
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
+	 *
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	public function cofl_pluginMenu()
+	{
+		$callback = 'cofl_renderAdminPage';
+
+		if(adminMenuExsits('cohesion')) {
+			add_submenu_page(
+				'cohesion',
+				'Filter List',
+				'Filter List',
+				'manage_options',
+				'cohesion-filter-list',
+				 array($this, $callback)
+			);
+		} else {
+			add_plugins_page(
+				'Cohesion Filter List',
+				'Cohesion Filter List',
+				'manage_options',
+				'cohesion-filter-list',
+				array($this, $callback)
+			);
+		}
+	}
+
+	/**
+	 * -----------------------------------------------------------------------------------------------
+	 * Menu Page Renderer
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	function cofl_renderAdminPage()
+	{
+
+	}
+
+	/**
+	 * -----------------------------------------------------------------------------------------------
 	 * Enqueue Scripts and styles
-	 * ---------------------------------------------------------------------------
-	 * This filter list depends on isotope.js we will use a CDN for this, a falllback
-	 * does need to be included though.
+	 * -----------------------------------------------------------------------------------------------
+	 * This filter list depends on isotope.js we will use a CDN for this, a falllback does need to be
+	 * included though.
 	 * @todo 		create fallback.
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
 	 */
 	public function cofl_enqeueMedia()
 	{
@@ -207,12 +250,11 @@ class FilterList
 	}
 
 	/**
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
 	 * Shortcode function
-	 * ---------------------------------------------------------------------------
-	 * This is our shortcode call back function. This is what will be outputted to
-	 * the frontend.
-	 * ---------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------------------------
+	 * This is our shortcode call back function. This is what will be outputted to the frontend.
+	 * -----------------------------------------------------------------------------------------------
 	 */
 	public function cofl_filterList($atts, $content = null)
 	{
@@ -242,8 +284,8 @@ class FilterList
 }//end class
 
 /**
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  * instantiate the class
- * -----------------------------------------------------------------------------
+ * -------------------------------------------------------------------------------------------------
  */
 new FilterList();

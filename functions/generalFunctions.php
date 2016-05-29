@@ -16,3 +16,16 @@ function arrayToObject($d) {
     return $d;
   }
 }
+
+function adminMenuExsits($menuItem) {
+	global $menu;
+	if(empty($menuItem)) {
+		return false;
+	}
+
+	foreach($menu as $item) {
+    if(strtolower($item[0]) == strtolower($menuItem)) {
+       return true;
+    }
+	}
+}

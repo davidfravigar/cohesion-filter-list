@@ -38,7 +38,7 @@ class cofl_shortcodeHelpers
 	 * @return [type]              [description]
 	 * -----------------------------------------------------------------------------------------------
 	 */
-	public static function cofl_fetchPosts($posttype='posts', $limit=-1, $passedArgs = array())
+	public static function cofl_fetchPosts($posttype='posts', $limit=10, $passedArgs = array())
 	{
 		global $wp_query;
 		$args = array_merge(array(
@@ -121,6 +121,7 @@ class cofl_shortcodeHelpers
 	public static function cofl_extractShortCodeAtts($atts)
 	{
 		return shortcode_atts(array(
+			'filter_type'						=> 'isotope',
 			'post_type'							=> 'post',
 			'max'										=> '10',
 			'offset'								=> '',
@@ -138,7 +139,7 @@ class cofl_shortcodeHelpers
 		$cats = array();
 		foreach($categories as $category){
 		    $cat = get_category($category);
-		    $cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+		    $cats[] = array('name' => $cat->name, 'slug' => $cat->slug, 'id' => $cat->term_id);
 		}
 
 		return arrayToObject($cats);
@@ -218,7 +219,7 @@ class cofl_shortcodeHelpers
 	 * @return array           		[description]
 	 * -----------------------------------------------------------------------------------------------
 	 */
-	private static function cofl_createBaseQuery($offset=0, $max=10, $postType='post')
+	private static function cofl_createBaseQuery($offset=0, $max=-1, $postType='post')
 	{
 		$queryArgs = array(
 			'post_type'								=> $postType,

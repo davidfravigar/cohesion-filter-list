@@ -9,8 +9,11 @@ $thumbID = get_post_thumbnail_id();
 $thumbUrlArray = wp_get_attachment_image_src($thumbID, '', true);
 $thumbUrl = $thumbUrlArray[0];
 
-$finalClass = array('style-'.$style, 'column-'.$columns);
 $categories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
+$finalClass = array('style-'.$style, 'column-'.$columns);
+foreach($categories as $category) {
+	$finalClass[] = 'filter-'.$category->id;
+}
 $title = get_the_title();
 $link = get_the_permalink($postID);
 

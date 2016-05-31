@@ -37,6 +37,7 @@ if (!defined('ABSPATH')) {
  */
 class FilterList
 {
+	private $filterType;
 	/**
 	 * -----------------------------------------------------------------------------------------------
 	 * Constructor
@@ -49,6 +50,7 @@ class FilterList
 		$this->cofl_includes();
 		$this->cofl_addShortcode();
 		add_action('wp_enqueue_scripts', array($this, 'cofl_enqeueMedia'));
+		add_action('wp_head', array($this, 'cofl_addPostFilterAjaxScriptsToFrontend'));
 	}//end constructor
 
 	/**
@@ -112,6 +114,15 @@ class FilterList
 					'type'				=> 'dropdown',
 					'holder' 			=> 'div',
   				'class' 			=> '',
+					'heading' 		=> __('Filter Type', 'cohesion'),
+					'param_name' 	=> 'filter_type',
+					'value'				=> array('Isotope Filter' => 'isotope', 'Ajax Filter' => 'ajax'),
+					'description' => __('Select the Filter type you would like to use', 'cohesion'),
+				),
+				array(
+					'type'				=> 'dropdown',
+					'holder' 			=> 'div',
+  				'class' 			=> '',
 					'heading' 		=> __('Post Type', 'cohesion'),
 					'param_name' 	=> 'post_type',
 					'value'				=> cofl_shortcodeHelpers::cofl_getPostTypes(),
@@ -126,6 +137,7 @@ class FilterList
 					'param_name' 	=> 'max',
 					'value'				=> '10',
 					'description' => __('Select the amount of entries to display', 'cohesion'),
+					//'dependency'	=> array('element' => 'filter_type','value' =>'ajax'),
 					'group'				=> 'Query',
 				),
 				array(
@@ -229,7 +241,7 @@ class FilterList
 	 */
 	function cofl_renderAdminPage()
 	{
-
+		require_once(FILTERLIST_VIEWS_DIR . '/admin-menu.php');
 	}
 
 	/**
@@ -249,6 +261,31 @@ class FilterList
 		 wp_enqueue_script('fontawesome.js', 'https://use.fontawesome.com/331b945e54.js', array(),'');
 	}
 
+	/*
+	 * -----------------------------------------------------------------------------------------------
+	 * Add Ajax Scripts to Frontend
+	 * -----------------------------------------------------------------------------------------------
+	 * Add Wordpress's Ajax scripts to the frontend of the site, by default these are only included
+	 * in the backend automatically.
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	public function cofl_addPostFilterAjaxScriptsToFrontend()
+	{
+	  $html = '<script type="text/javascript">';
+	  $html .= 'var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '"';
+	  $html .= '</script>';
+	  echo $html;
+	}
+
+	public function cofl_addPostFilterScriptsToFooter()
+	{
+		?>
+			<script>
+				<?php include_once(FILTERLIST_DIR . 'assets/js/min/'.$this->filterType.'-filterlist-min.js'); ?>
+			</script>
+		<?php
+	}
+
 	/**
 	 * -----------------------------------------------------------------------------------------------
 	 * Shortcode function
@@ -258,10 +295,12 @@ class FilterList
 	 */
 	public function cofl_filterList($atts, $content = null)
 	{
-		$out = '';
 		extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
 		$filterList = cofl_shortcodeHelpers::cofl_getFilterList($included_categories, $post_type);
 		$filters = arrayToObject($filterList);
+		$this->filterType = $filter_type;
+		add_action('wp_footer', array($this, 'cofl_addPostFilterScriptsToFooter'));
+
 		$query = cofl_shortcodeHelpers::cofl_getFilterQuery($atts);
 		if($query->have_posts()) {
 			?>
@@ -276,6 +315,7 @@ class FilterList
 								endwhile;
 							?>
 						</div>
+						<?php require_once(FILTERLIST_VIEWS_DIR . '/loadmore-button.php'); ?>
 					</div>
 				</div>
 			<?php

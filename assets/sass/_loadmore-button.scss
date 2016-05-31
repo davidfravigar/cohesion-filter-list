@@ -1,0 +1,10 @@
+@include button('.js-filter-list-loadmore');
+
+.filter-list-loadmore {
+
+	margin-top: 40px;
+
+	&__inner {
+		text-align: center;
+	}
+}

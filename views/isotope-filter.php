@@ -10,7 +10,7 @@
 	<div class="isotope-filter__inner">
 		<ul class="isotope-filter__list"><?php?>
 			<li class="isotope-filter__list--item">
-				<button  class="isotope-filter--button" data-filter=".filter-all">show all</button>
+				<button  class="isotope-filter--button" data-filter="*">show all</button>
 			</li>
 			<?php foreach($filters as $filter) { ?>
 				<?php ?>

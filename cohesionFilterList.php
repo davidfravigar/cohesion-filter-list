@@ -51,6 +51,8 @@ class FilterList
 		$this->cofl_addShortcode();
 		add_action('wp_enqueue_scripts', array($this, 'cofl_enqeueMedia'));
 		add_action('wp_head', array($this, 'cofl_addPostFilterAjaxScriptsToFrontend'));
+		add_action('wp_ajax_filterlist_action', array($this, 'filterListCallback'));
+		add_action('wp_ajax_nopriv_filterlist_action', array($this,'filterListCallback'));
 	}//end constructor
 
 	/**
@@ -271,6 +273,8 @@ class FilterList
 	 */
 	public function cofl_addPostFilterAjaxScriptsToFrontend()
 	{
+		$ajax_nonce = wp_create_nonce("filterposts-ajax");
+	  $siteUrl = site_url();
 	  $html = '<script type="text/javascript">';
 	  $html .= 'var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '"';
 	  $html .= '</script>';
@@ -310,7 +314,6 @@ class FilterList
 						<div class="js-filter-list filter-list">
 							<?php
 								while ( $query->have_posts() ) : $query->the_post();
-									//include(FILTERLIST_VIEWS_DIR . '/item-'.$style.'.php');
 									include(FILTERLIST_VIEWS_DIR . '/item.php');
 								endwhile;
 							?>
@@ -321,6 +324,53 @@ class FilterList
 			<?php
 		}
 	}//end filterList
+
+	public function filterListCallback()
+	{
+		$posts = array();
+		$atts = json_decode(stripslashes($_POST['atts']));
+		extract(cofl_shortcodeHelpers::cofl_extractShortCodeAtts($atts));
+		$filterList = cofl_shortcodeHelpers::cofl_getFilterList($included_categories, $post_type);
+		$filters = arrayToObject($filterList);
+		$query = cofl_shortcodeHelpers::cofl_getFilterQuery($atts);
+		if($query->have_posts()) {
+			while ( $query->have_posts() ) : $query->the_post();
+				$categories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
+				$finalClass = array('style-'.$style, 'column-'.$columns);
+				foreach($categories as $category) {
+					$finalClass[] = 'filter-'.$category->id;
+				}
+				$title = get_the_title();
+				$link = get_the_permalink($postID);
+
+				switch($style) {
+					case 'modern':
+						$imageParams = array('width' => 400, 'height' => 400);
+						$finalClass[] = 'align-'.$alignment;
+					break;
+					case 'flat':
+
+					break;
+					case 'dsc':
+						$imageParams = array('width' => 400, 'height' => 300);
+					break;
+					default:
+
+					break;
+				}
+
+				$image = bfi_thumb($thumbUrl, $imageParams);
+				$posts = array(
+					'title'  			=> $title,
+					'image'				=> $image,
+					'link'				=> $link,
+					'class'				=> $finalClass,
+					'categories'	=> $categories
+				);
+			endwhile;
+		}
+		die();
+	}
 }//end class
 
 /**

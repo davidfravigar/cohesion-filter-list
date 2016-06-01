@@ -16,9 +16,22 @@
 
 			$(this).find('.js-filter-list-loadmore').on('click', function(event) {
 				event.preventDefault();
-				console.log('add more clicked with atts: ');
+				console.log('ajax url: ' + ajaxurl);
 				var atts = $(this).attr('data-filter-list-atts');
-				console.log(atts);
+				var data = {
+    			'action': 'filterlist_action',
+          'security': '<?php echo $ajax_nonce; ?>',
+          'atts': atts,
+    		};
+    		$.post(ajaxurl, data, function(response){
+    	 		//if(parseResults(response)) {
+    	 			console.log(response);
+    	 			//addItemsToFilterList(response, atts, element);
+    	 		//}
+        })
+        .fail(function(){
+          console.log('error');
+        });
 			});
 		});
 	});

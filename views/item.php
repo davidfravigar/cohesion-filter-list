@@ -5,40 +5,16 @@
  * -------------------------------------------------------------------------------------------------
  */
 $postID = get_the_ID();
-$thumbID = get_post_thumbnail_id();
-$thumbUrlArray = wp_get_attachment_image_src($thumbID, '', true);
-$thumbUrl = $thumbUrlArray[0];
-
+$finalClass = cofl_shortcodeHelpers::cofl_getfinalClass($postID, $atts);
 $categories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
-$finalClass = array('style-'.$style, 'column-'.$columns);
-foreach($categories as $category) {
-	$finalClass[] = 'filter-'.$category->id;
-}
 $title = get_the_title();
 $link = get_the_permalink($postID);
-
-switch($style) {
-	case 'modern':
-		$imageParams = array('width' => 400, 'height' => 400);
-		$finalClass[] = 'align-'.$alignment;
-	break;
-	case 'flat':
-
-	break;
-	case 'dsc':
-		$imageParams = array('width' => 400, 'height' => 300);
-	break;
-	default:
-
-	break;
-}
-
-$image = bfi_thumb($thumbUrl, $imageParams);
 ?>
 
 <div class="filter-list--item <?php echo implode(' ', $finalClass); ?>">
 	<div class="filter-list--item--image">
 		<?php if(has_post_thumbnail(get_the_ID())) { ?>
+			<?php $image = cofl_shortcodeHelpers::cofl_getPostImage($postID, $style); ?>
 			<img src="<?php echo $image; ?>" />
 		<?php } else { ?>
 			<img src="http://placehold.it/400x400">

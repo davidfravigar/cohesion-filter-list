@@ -94,6 +94,7 @@ class FilterList
 	{
 		if(is_plugin_active('js_composer_theme/js_composer.php')) {
 			require_once(FILTERLIST_FUNCTIONS_DIR . '/shortcodeHelpers.php');
+			require_once(FILTERLIST_FUNCTIONS_DIR . '/vcHelpers.php');
 			add_action('vc_before_init', array($this, 'cofl_registerVisualComposerShortcode'));
 		}
 		add_action('admin_menu', array($this, 'cofl_pluginMenu'));
@@ -127,7 +128,7 @@ class FilterList
   				'class' 			=> '',
 					'heading' 		=> __('Post Type', 'cohesion'),
 					'param_name' 	=> 'post_type',
-					'value'				=> cofl_shortcodeHelpers::cofl_getPostTypes(),
+					'value'				=> cofl_vcHelpers::cofl_getPostTypes(),
 					'description' => __('Select the post type to display in this element', 'cohesion'),
 					'group'				=> 'Query',
 				),
@@ -335,39 +336,30 @@ class FilterList
 		$query = cofl_shortcodeHelpers::cofl_getFilterQuery($atts);
 		if($query->have_posts()) {
 			while ( $query->have_posts() ) : $query->the_post();
-				$categories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
-				$finalClass = array('style-'.$style, 'column-'.$columns);
-				foreach($categories as $category) {
-					$finalClass[] = 'filter-'.$category->id;
+				$postID = get_the_ID();
+				$finalClass = cofl_shortcodeHelpers::cofl_getfinalClass($postID, $atts);
+				$image = cofl_shortcodeHelpers::cofl_getPostImage($postID, $style);
+				$postCategories = cofl_shortcodeHelpers::cofl_getPostTerms(get_the_ID());
+				$categories = array();
+				foreach($postCategories as $category) {
+					if(array_key_exists($category->name, $filterList)) {
+						$categories[] = $category;
+					}
 				}
 				$title = get_the_title();
 				$link = get_the_permalink($postID);
-
-				switch($style) {
-					case 'modern':
-						$imageParams = array('width' => 400, 'height' => 400);
-						$finalClass[] = 'align-'.$alignment;
-					break;
-					case 'flat':
-
-					break;
-					case 'dsc':
-						$imageParams = array('width' => 400, 'height' => 300);
-					break;
-					default:
-
-					break;
-				}
-
-				$image = bfi_thumb($thumbUrl, $imageParams);
-				$posts = array(
+				$post = array(
 					'title'  			=> $title,
 					'image'				=> $image,
 					'link'				=> $link,
 					'class'				=> $finalClass,
 					'categories'	=> $categories
 				);
+				$posts[] = $post;
 			endwhile;
+			echo json_encode($posts);
+		} else {
+			echo 'no results found';
 		}
 		die();
 	}

@@ -5,7 +5,7 @@
  * -------------------------------------------------------------------------------------------------
  */
 $atts['offset'] += $max;
-var_dump(json_encode($atts));
+//var_dump(json_encode($atts));
 ?>
 	<div class="filter-list-loadmore">
 		<div class="filter-list-loadmore__inner">

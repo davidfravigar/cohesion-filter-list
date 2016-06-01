@@ -4,32 +4,6 @@ class cofl_shortcodeHelpers
 {
 	/**
 	 * -----------------------------------------------------------------------------------------------
-	 * Get Post types
-	 * -----------------------------------------------------------------------------------------------
-	 * gets a list of all registered post types that are not built in to Wordpress for use with Visual
-	 * Composer VC Map function. The function also merges an array of the built in post types we do
-	 * want, which in this case are just posts as they are pretty important.
-	 *
-	 * This function uses the built in Wordpress get_post_types.
-	 * @see https://codex.wordpress.org/Function_Reference/get_post_types
-	 * @return array $postTypes.
-	 * -----------------------------------------------------------------------------------------------
-	 */
-	public static function cofl_getPostTypes()
-	{
-		$args = array(
-   		'public'   => true,
-   		'_builtin' => false
-		);
-		$output = 'names';
-		$operator = 'and';
-		$postTypes = array('posts');
-		$postTypes = array_merge($postTypes, get_post_types($args, $output, $operator));
-		return $postTypes;
-	}
-
-	/**
-	 * -----------------------------------------------------------------------------------------------
 	 * [fetchPosts description]
 	 * -----------------------------------------------------------------------------------------------
 	 * @param  string  $posttype   [description]
@@ -38,7 +12,7 @@ class cofl_shortcodeHelpers
 	 * @return [type]              [description]
 	 * -----------------------------------------------------------------------------------------------
 	 */
-	public static function cofl_fetchPosts($posttype='posts', $limit=10, $passedArgs = array())
+	public static function cofl_fetchPosts($posttype='posts', $limit=-1, $passedArgs = array())
 	{
 		global $wp_query;
 		$args = array_merge(array(
@@ -289,5 +263,58 @@ class cofl_shortcodeHelpers
 		$query = new WP_Query($queryArgs);
 		wp_reset_query();
 		return $query;
+	}
+
+	/**
+	 * -------------------------------------------------------------------------------------------------
+	 * construct the final Class.
+	 * -----------------------------------------------------------------------------------------------
+	 * This is a function due to the fact that this block of code is used in various different places,
+	 * and having it in one place avoids mistakes and having to change it in multiple places. (I know
+	 * common sense right!)
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	public static function cofl_getfinalClass($id, $atts)
+	{
+		extract(self::cofl_extractShortCodeAtts($atts));
+		$finalClass = array('style-'.$style, 'column-'.$columns);
+		$categories = self::cofl_getPostTerms($id);
+		foreach($categories as $category) {
+			$finalClass[] = 'filter-'.$category->id;
+		}
+
+		if($style === 'modern') {
+			$finalClass[] = 'align-'.$alignment;
+		}
+		return $finalClass;
+	}
+
+	/**
+	 * -----------------------------------------------------------------------------------------------
+	 * Get Post Image
+	 * -----------------------------------------------------------------------------------------------
+	 */
+	public static function cofl_getPostImage($id, $style)
+	{
+		$thumbID = get_post_thumbnail_id($id);
+		$thumbUrlArray = wp_get_attachment_image_src($thumbID, '', true);
+		$thumbUrl = $thumbUrlArray[0];
+		switch($style) {
+			case 'modern':
+				$imageParams = array('width' => 400, 'height' => 400);
+				$finalClass[] = 'align-'.$alignment;
+			break;
+			case 'flat':
+
+			break;
+			case 'dsc':
+				$imageParams = array('width' => 400, 'height' => 300);
+			break;
+			default:
+
+			break;
+		}
+		$image = bfi_thumb($thumbUrl, $imageParams);
+		return $image;
 	}
 }

@@ -357,28 +357,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/assets\/js\/ajax-filterlist.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/ajax-filterlist.js",
-		"outputAbbreviatedPath": "\/assets\/js\/min\/ajax-filterlist-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/filterList.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/filterList.js",
-		"outputAbbreviatedPath": "\/assets\/js\/min\/filterList-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/assets\/js\/isotope-filterlist.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -396,17 +374,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/libs\/isotope.pkgd.min.js",
 		"outputAbbreviatedPath": "\/assets\/js\/libs\/min\/isotope.pkgd.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/min\/filterList-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/min\/filterList-min.js",
-		"outputAbbreviatedPath": "\/assets\/js\/min\/min\/filterList-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -669,10 +636,10 @@
 "manualImportLinks": {
 	},
 "projectAttributes": {
-	"bowerAbbreviatedPath": "",
-	"displayValue": "cohesion-filter-list",
+	"bowerAbbreviatedPath": "assets",
+	"displayValue": "cohesion_filterlist",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "brackets_yellow"
+	"iconImageName": "harddrive_darkGray"
 	},
 "projectSettings": {
 	"alwaysUseExternalServer": 0,

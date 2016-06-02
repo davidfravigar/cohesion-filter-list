@@ -32,7 +32,7 @@
 	    		oldAtts.offset = offset+10;
 	    	} else {
 	    		var max = oldAtts.max;
-	    		oldAtts.offset = offset+max;
+	    		oldAtts.offset = offset + parseInt(max);
 	    	}
 	    	var newAtts = JSON.stringify(oldAtts);
 	    	return newAtts;

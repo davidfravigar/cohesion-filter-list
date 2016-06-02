@@ -258,8 +258,9 @@ class FilterList
 	 */
 	public function cofl_enqeueMedia()
 	{
-		 wp_enqueue_script('isotope.js', FILTERLIST_ASSETS_URL . '/js/libs/isotope.pkgd.min.js', array('jquery'),'3.0.0', true );
-		  wp_enqueue_script('filterList.js', FILTERLIST_ASSETS_URL . '/js/filterList.js', array('jquery'),'1.0.0', true );
+		 wp_enqueue_script('isotope.js', FILTERLIST_ASSETS_URL . '/js/libs/isotope.pkgd.min.js', array('jquery'),'3.0.0', true);
+		 //wp_enqueue_script('filterList-functions.js', FILTERLIST_ASSETS_URL . '/js/min/functions-filterList-min.js', array('jquery', 'isotope.js'),'1.0.0', true);
+		  //wp_enqueue_script('filterList-base.js', FILTERLIST_ASSETS_URL . '/js/min/filterList-min.js', array('jquery', 'isotope.js', 'filterList-functions.js'),'1.0.0', true);
 		 wp_enqueue_style('filterList.css', FILTERLIST_ASSETS_URL . '/css/filterList.css', '', '', 'all', 18);
 		 wp_enqueue_script('fontawesome.js', 'https://use.fontawesome.com/331b945e54.js', array(),'');
 	}

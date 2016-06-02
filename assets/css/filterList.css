@@ -234,41 +234,9 @@
     .filter-list--item.column-1:nth-child(1n + 1) {
       clear: both; }
   .filter-list--item.colum-2 {
-    *zoom: 1;
-    float: left;
-    clear: none;
-    text-align: inherit;
-    width: 48.5%;
-    margin-left: 0%;
-    margin-right: 3%; }
-    .filter-list--item.colum-2:before, .filter-list--item.colum-2:after {
-      content: '';
-      display: table; }
-    .filter-list--item.colum-2:after {
-      clear: both; }
-    .filter-list--item.colum-2:nth-child(2n) {
-      margin-right: 0%;
-      float: right; }
-    .filter-list--item.colum-2:nth-child(2n + 1) {
-      clear: both; }
+    width: 49%; }
   .filter-list--item.column-3 {
-    *zoom: 1;
-    float: left;
-    clear: none;
-    text-align: inherit;
-    width: 32.6666666667%;
-    margin-left: 0%;
-    margin-right: 1%; }
-    .filter-list--item.column-3:before, .filter-list--item.column-3:after {
-      content: '';
-      display: table; }
-    .filter-list--item.column-3:after {
-      clear: both; }
-    .filter-list--item.column-3:nth-child(3n) {
-      margin-right: 0%;
-      float: right; }
-    .filter-list--item.column-3:nth-child(3n + 1) {
-      clear: both; }
+    width: 32.333%; }
   .filter-list--item.column-4 {
     *zoom: 1;
     float: left;

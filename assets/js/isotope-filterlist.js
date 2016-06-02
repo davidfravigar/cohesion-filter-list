@@ -4,7 +4,11 @@
 			var $filterList = $(this).find('.js-filter-list');
 			$filterList.isotope({
 				itemSelector: '.filter-list--item',
-		 	  layoutMode: 'fitRows'
+		 	  layoutMode: 'fitRows',
+		 	  percentPosition: true,
+		 	  fitRows: {
+				  gutter: 10
+				}
 			});
 
 			/**

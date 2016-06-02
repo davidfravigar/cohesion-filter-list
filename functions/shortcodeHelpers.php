@@ -296,25 +296,34 @@ class cofl_shortcodeHelpers
 	 */
 	public static function cofl_getPostImage($id, $style)
 	{
-		$thumbID = get_post_thumbnail_id($id);
-		$thumbUrlArray = wp_get_attachment_image_src($thumbID, '', true);
-		$thumbUrl = $thumbUrlArray[0];
+		$width = '';
+		$height = '';
 		switch($style) {
 			case 'modern':
-				$imageParams = array('width' => 400, 'height' => 400);
-				$finalClass[] = 'align-'.$alignment;
+				$width = 400;
+				$height = 400;
 			break;
 			case 'flat':
 
 			break;
 			case 'dsc':
-				$imageParams = array('width' => 400, 'height' => 300);
+				$width = 400;
+				$height = 300;
 			break;
 			default:
-
+				$width = 600;
+				$height = 400;
 			break;
 		}
-		$image = bfi_thumb($thumbUrl, $imageParams);
+		if(has_post_thumbnail($id)) {
+			$thumbID = get_post_thumbnail_id($id);
+			$thumbUrlArray = wp_get_attachment_image_src($thumbID, '', true);
+			$thumbUrl = $thumbUrlArray[0];
+			$imageParams = array('width' => $width, 'height' => $height, 'crop' => true);
+			$image = bfi_thumb($thumbUrl, $imageParams);
+		} else {
+			$image = 'http://placehold.it/'.$width.'x'.$height;
+		}
 		return $image;
 	}
 }

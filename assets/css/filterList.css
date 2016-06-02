@@ -1,2 +1,355 @@
-/* line 3, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.isotope-filter--button{padding:10px 20px;margin-right:10px;margin-bottom:10px}/* line 9, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.isotope-filter--button:hover{cursor:pointer}/* line 20, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.isotope-filter--button{color:#333;border:1px solid #333;font-weight:bold;background:transparent;border-radius:3px;font-size:1.2em}/* line 30, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.isotope-filter--button:hover{background:#2DC7FF;border:1px solid #2DC7FF;color:white}/* line 3, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_isotope.scss */.isotope-filter{width:100%;margin-bottom:20px}/* line 11, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_isotope.scss */.isotope-filter__list{margin:0;padding:0}/* line 16, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_isotope.scss */.isotope-filter__list--item{display:inline-block;margin:0}/* line 3, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.js-filter-list-loadmore{padding:10px 20px;margin-right:10px;margin-bottom:10px}/* line 9, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.js-filter-list-loadmore:hover{cursor:pointer}/* line 20, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.js-filter-list-loadmore{color:#333;border:1px solid #333;font-weight:bold;background:transparent;border-radius:3px;font-size:1.2em}/* line 30, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_buttons.scss */.js-filter-list-loadmore:hover{background:#2DC7FF;border:1px solid #2DC7FF;color:white}/* line 3, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_loadmore-button.scss */.filter-list-loadmore{margin-top:40px}/* line 7, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_loadmore-button.scss */.filter-list-loadmore__inner{text-align:center}/* line 1, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-container.scss */.filter-list{*zoom:1;width:auto;max-width:100%;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:0;padding-right:0}/* line 344, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list:before,.filter-list:after{content:'';display:table}/* line 349, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list:after{clear:both}/* line 1, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-item.scss */.filter-list--item{margin-bottom:40px}/* line 3, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-item.scss */.filter-list--item.column-1{*zoom:1;float:left;clear:none;text-align:inherit;width:100%;margin-left:0%;margin-right:3%}/* line 344, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-1:before,.filter-list--item.column-1:after{content:'';display:table}/* line 349, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-1:after{clear:both}/* line 50, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-1:nth-child(1n){margin-right:0%;float:right}/* line 54, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-1:nth-child(1n+1){clear:both}/* line 7, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-item.scss */.filter-list--item.colum-2{*zoom:1;float:left;clear:none;text-align:inherit;width:48.5%;margin-left:0%;margin-right:3%}/* line 344, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.colum-2:before,.filter-list--item.colum-2:after{content:'';display:table}/* line 349, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.colum-2:after{clear:both}/* line 50, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.colum-2:nth-child(2n){margin-right:0%;float:right}/* line 54, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.colum-2:nth-child(2n+1){clear:both}/* line 11, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-item.scss */.filter-list--item.column-3{*zoom:1;float:left;clear:none;text-align:inherit;width:32.6666666667%;margin-left:0%;margin-right:1%}/* line 344, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-3:before,.filter-list--item.column-3:after{content:'';display:table}/* line 349, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-3:after{clear:both}/* line 50, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-3:nth-child(3n){margin-right:0%;float:right}/* line 54, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-3:nth-child(3n+1){clear:both}/* line 15, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_filterList-item.scss */.filter-list--item.column-4{*zoom:1;float:left;clear:none;text-align:inherit;width:22.75%;margin-left:0%;margin-right:3%}/* line 344, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-4:before,.filter-list--item.column-4:after{content:'';display:table}/* line 349, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-4:after{clear:both}/* line 50, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-4:nth-child(4n){margin-right:0%;float:right}/* line 54, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/bower_components/jeet/scss/jeet/_grid.scss */.filter-list--item.column-4:nth-child(4n+1){clear:both}/* line 1, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern{overflow:hidden;position:relative;margin-bottom:1%}/* line 6, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern .filter-list--item--image{width:100%;height:auto;-webkit-transition:-webkit-transform 0.5s;transition:-webkit-transform 0.5s;transition:transform 0.5s;transition:transform 0.5s, -webkit-transform 0.5s}/* line 12, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern .filter-list--item--content{position:absolute;-webkit-transition:-webkit-transform 0.5s;transition:-webkit-transform 0.5s;transition:transform 0.5s;transition:transform 0.5s, -webkit-transform 0.5s}/* line 16, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern .filter-list--item--content h3{font-size:1.2em}/* line 20, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern .filter-list--item--content .category-list{margin:0;padding:0;list-style-type:none}/* line 37, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left .filter-list--item--content{top:0;left:-50%;width:50%;background:#333;height:100%;padding:40px 20px}/* line 45, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left .filter-list--item--content h3{color:white}/* line 49, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left .filter-list--item--content .category-list--item{display:inline-block;margin-left:0;font-size:0.8em}/* line 55, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left .filter-list--item--content .post-link{position:absolute;bottom:40px;border:1px solid #fff;color:#fff;font-weight:bold;background:transparent;border-radius:3px;font-size:0.9em;padding:5px 10px}/* line 66, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left .filter-list--item--content .post-link:hover{background:#2DC7FF;border:1px solid #2DC7FF;color:white}/* line 75, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left:hover .filter-list--item--image{-webkit-transform:translate3d(25%, 0, 0);transform:translate3d(25%, 0, 0)}/* line 79, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-left:hover .filter-list--item--content{-webkit-transform:translate3d(100%, 0, 0);transform:translate3d(100%, 0, 0)}/* line 86, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.align-bottom .filter-list--item--content{-webkit-transform:translate3d(0, 0%, 0%);transform:translate3d(0, 0%, 0%);width:100%;background:#333;height:30%;padding:20px 20px}/* line 92, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.align-bottom .filter-list--item--content h3{color:white}/* line 110, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.align-bottom:hover .filter-list--item--image{-webkit-transform:translate3d(0, -30%, 200px);transform:translate3d(0, -30%, 200px)}/* line 114, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.align-bottom:hover .filter-list--item--content{-webkit-transform:translate3d(0, 30%, 0);transform:translate3d(0, 30%, 0)}/* line 123, /Users/davidfravigar/Sites/www/cohesion-wordpress/wp-content/plugins/cohesion_filterlist/assets/sass/_style-modern.scss */.filter-list--item.style-modern.align-cover .filter-list--item--content h3{color:white}
-/*# sourceMappingURL=filterList.css.map */
+/*  Syntax Quick Reference
+  --------------------------
+  column($ratios: 1, $offset: 0, $cycle: 0, $uncycle: 0, $gutter: $jeet-gutter)
+  span($ratio: 1, $offset: 0)
+  shift($ratios: 0, $col_or_span: column, $gutter: $jeet-gutter)
+  unshift()
+  edit()
+  center($max_width: 1410px, $pad: 0)
+  stack($pad: 0, $align: false)
+  unstack()
+  align($direction: both)
+  cf()
+*/
+/**
+ * Grid settings.
+ * All values are defaults and can therefore be easily overidden.
+ */
+/**
+ * List functions courtesy of the wonderful folks at Team Sass.
+ * Check out their awesome grid: Singularity.
+ */
+/**
+ * Get  percentage from a given ratio.
+ * @param {number} [$ratio=1] - The column ratio of the element.
+ * @returns {number} - The percentage value.
+ */
+/**
+ * Work out the column widths based on the ratio and gutter sizes.
+ * @param {number} [$ratios=1] - The column ratio of the element.
+ * @param {number} [$gutter=$jeet-gutter] - The gutter for the column.
+ * @returns {list} $width $gutter - A list containing the with and gutter for the element.
+ */
+/**
+ * Get the set layout direction for the project.
+ * @returns {string} $direction - The layout direction.
+ */
+/**
+ * Replace a specified list value with a new value (uses built in set-nth() if available)
+ * @param {list} $list - The list of values you want to alter.
+ * @param {number} $index - The index of the list item you want to replace.
+ * @param {*} $value - The value you want to replace $index with.
+ * @returns {list} $list - The list with the value replaced or removed.
+ * @warn if an invalid index is supplied.
+ */
+/**
+ * Reverse a list (progressively enhanced for Sass 3.3)
+ * @param {list} $list - The list of values you want to reverse.
+ * @returns {list} $result - The reversed list.
+ */
+/**
+ * Get the opposite direction to a given value.
+ * @param {string} $dir - The direction you want the opposite of.
+ * @returns {string} - The opposite direction to $dir.
+ * @warn if an incorrect string is provided.
+ */
+/**
+ * Style an element as a column with a gutter.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
+ * @param {number} [$cycle=0] - Easily create an nth column grid where $cycle equals the number of columns.
+ * @param {number} [$uncycle=0] - Undo a previous cycle value to allow for a new one.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * An alias for the column mixin.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * Get the width of a column and nothing else.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * Get the gutter size of a column and nothing else.
+ * @param {number} [ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [gutter=jeet.gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * An alias for the column-width function.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * An alias for the column-gutter function.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * Style an element as a column without any gutters for a seamless row.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
+ * @param {number} [cycle=0] - Easily create an nth column grid where cycle equals the number of columns.
+ * @param {number} [uncycle=0] - Undo a previous cycle value to allow for a new one.
+ */
+/**
+ * Reorder columns without altering the HTML.
+ * @param {number} [$ratios=0] - Specify how far along you want the element to move.
+ * @param {string} [$col-or-span=column] - Specify whether the element has a gutter or not.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * Reset an element that has had shift() applied to it.
+ */
+/**
+ * View the grid and its layers for easy debugging.
+ * @param {string} [$color=black] - The background tint applied.
+ * @param {boolean} [$important=false] - Whether to apply the style as !important.
+ */
+/**
+ *  Alias for edit().
+ */
+/**
+ * Horizontally center an element.
+ * @param {number} [$max-width=1410px] - The max width the element can be.
+ * @param {number} [$pad=0] - Specify the element's left and right padding.
+ */
+/**
+ * Uncenter an element.
+ */
+/**
+ * Stack an element so that nothing is either side of it.
+ * @param {number} [$pad=0] - Specify the element's left and right padding.
+ * @param {boolean/string} [$align=false] - Specify the text align for the element.
+ */
+/**
+ * Unstack an element.
+ */
+/**
+ * Center an element on either or both axes.
+ * @requires A parent container with relative positioning.
+ * @param {string} [$direction=both] - Specify which axes to center the element on.
+ */
+/**
+ * Apply a clearfix to an element.
+ */
+.isotope-filter--button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+
+.isotope-filter--button:hover {
+  cursor: pointer; }
+
+.isotope-filter--button {
+  color: #333;
+  border: 1px solid #333;
+  font-weight: bold;
+  background: transparent;
+  border-radius: 3px;
+  font-size: 1.2em; }
+
+.isotope-filter--button:hover {
+  background: #2DC7FF;
+  border: 1px solid #2DC7FF;
+  color: white; }
+
+.isotope-filter {
+  width: 100%;
+  margin-bottom: 20px; }
+  .isotope-filter__list {
+    margin: 0;
+    padding: 0; }
+  .isotope-filter__list--item {
+    display: inline-block;
+    margin: 0; }
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s; }
+
+.js-filter-list-loadmore {
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+
+.js-filter-list-loadmore:hover {
+  cursor: pointer; }
+
+.js-filter-list-loadmore {
+  color: #333;
+  border: 1px solid #333;
+  font-weight: bold;
+  background: transparent;
+  border-radius: 3px;
+  font-size: 1.2em; }
+
+.js-filter-list-loadmore:hover {
+  background: #2DC7FF;
+  border: 1px solid #2DC7FF;
+  color: white; }
+
+.filter-list-loadmore {
+  margin-top: 40px; }
+  .filter-list-loadmore__inner {
+    text-align: center; }
+
+.filter-list {
+  *zoom: 1;
+  width: auto;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0; }
+  .filter-list:before, .filter-list:after {
+    content: '';
+    display: table; }
+  .filter-list:after {
+    clear: both; }
+
+.filter-list--item {
+  margin-bottom: 40px; }
+  .filter-list--item.column-1 {
+    *zoom: 1;
+    float: left;
+    clear: none;
+    text-align: inherit;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 3%; }
+    .filter-list--item.column-1:before, .filter-list--item.column-1:after {
+      content: '';
+      display: table; }
+    .filter-list--item.column-1:after {
+      clear: both; }
+    .filter-list--item.column-1:nth-child(1n) {
+      margin-right: 0%;
+      float: right; }
+    .filter-list--item.column-1:nth-child(1n + 1) {
+      clear: both; }
+  .filter-list--item.colum-2 {
+    *zoom: 1;
+    float: left;
+    clear: none;
+    text-align: inherit;
+    width: 48.5%;
+    margin-left: 0%;
+    margin-right: 3%; }
+    .filter-list--item.colum-2:before, .filter-list--item.colum-2:after {
+      content: '';
+      display: table; }
+    .filter-list--item.colum-2:after {
+      clear: both; }
+    .filter-list--item.colum-2:nth-child(2n) {
+      margin-right: 0%;
+      float: right; }
+    .filter-list--item.colum-2:nth-child(2n + 1) {
+      clear: both; }
+  .filter-list--item.column-3 {
+    *zoom: 1;
+    float: left;
+    clear: none;
+    text-align: inherit;
+    width: 32.6666666667%;
+    margin-left: 0%;
+    margin-right: 1%; }
+    .filter-list--item.column-3:before, .filter-list--item.column-3:after {
+      content: '';
+      display: table; }
+    .filter-list--item.column-3:after {
+      clear: both; }
+    .filter-list--item.column-3:nth-child(3n) {
+      margin-right: 0%;
+      float: right; }
+    .filter-list--item.column-3:nth-child(3n + 1) {
+      clear: both; }
+  .filter-list--item.column-4 {
+    *zoom: 1;
+    float: left;
+    clear: none;
+    text-align: inherit;
+    width: 22.75%;
+    margin-left: 0%;
+    margin-right: 3%; }
+    .filter-list--item.column-4:before, .filter-list--item.column-4:after {
+      content: '';
+      display: table; }
+    .filter-list--item.column-4:after {
+      clear: both; }
+    .filter-list--item.column-4:nth-child(4n) {
+      margin-right: 0%;
+      float: right; }
+    .filter-list--item.column-4:nth-child(4n + 1) {
+      clear: both; }
+
+.filter-list--item.style-modern {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1%; }
+  .filter-list--item.style-modern .filter-list--item--image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s; }
+  .filter-list--item.style-modern .filter-list--item--content {
+    position: absolute;
+    transition: transform 0.5s; }
+    .filter-list--item.style-modern .filter-list--item--content h3 {
+      font-size: 1.2em; }
+    .filter-list--item.style-modern .filter-list--item--content .category-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+
+.filter-list--item.style-modern.align-left .filter-list--item--content {
+  top: 0;
+  left: -50%;
+  width: 50%;
+  background: #333;
+  height: 100%;
+  padding: 40px 20px; }
+  .filter-list--item.style-modern.align-left .filter-list--item--content h3 {
+    color: white; }
+  .filter-list--item.style-modern.align-left .filter-list--item--content .category-list--item {
+    display: inline-block;
+    margin-left: 0;
+    font-size: 0.8em; }
+  .filter-list--item.style-modern.align-left .filter-list--item--content .post-link {
+    position: absolute;
+    bottom: 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: bold;
+    background: transparent;
+    border-radius: 3px;
+    font-size: 0.9em;
+    padding: 5px 10px; }
+    .filter-list--item.style-modern.align-left .filter-list--item--content .post-link:hover {
+      background: #2DC7FF;
+      border: 1px solid #2DC7FF;
+      color: white; }
+.filter-list--item.style-modern.align-left:hover .filter-list--item--image {
+  transform: translate3d(25%, 0, 0); }
+.filter-list--item.style-modern.align-left:hover .filter-list--item--content {
+  transform: translate3d(100%, 0, 0); }
+
+.filter-list--item.align-bottom .filter-list--item--content {
+  transform: translate3d(0, 0%, 0%);
+  width: 100%;
+  background: #333;
+  height: 30%;
+  padding: 20px 20px; }
+  .filter-list--item.align-bottom .filter-list--item--content h3 {
+    color: white; }
+.filter-list--item.align-bottom:hover .filter-list--item--image {
+  transform: translate3d(0, -30%, 200px); }
+.filter-list--item.align-bottom:hover .filter-list--item--content {
+  transform: translate3d(0, 30%, 0); }
+
+.filter-list--item.style-modern.align-cover .filter-list--item--content h3 {
+  color: white; }

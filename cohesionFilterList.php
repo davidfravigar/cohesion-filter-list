@@ -352,7 +352,7 @@ class FilterList
 					'title'  			=> $title,
 					'image'				=> $image,
 					'link'				=> $link,
-					'class'				=> $finalClass,
+					'class'				=> implode(' ', $finalClass),
 					'categories'	=> $categories
 				);
 				$posts[] = $post;

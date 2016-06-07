@@ -196,6 +196,8 @@
   margin-top: 40px; }
   .filter-list-loadmore__inner {
     text-align: center; }
+  .filter-list-loadmore .is-loading {
+    display: none; }
 
 .filter-list {
   *zoom: 1;

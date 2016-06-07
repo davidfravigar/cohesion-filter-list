@@ -80,6 +80,8 @@
 			$(this).find('.js-filter-list-loadmore').on('click', function(event) {
 				event.preventDefault();
 				var loadmore = $(this);
+				loadmore.find('.text').text('loading...');
+				loadmore.find('.is-loading').css('display', 'inline-block');
 				var atts = $(this).attr('data-filter-list-atts');
 				var data = {
     			'action': 'filterlist_action',
@@ -95,6 +97,10 @@
         })
         .fail(function(){
           console.log('error');
+        })
+        .success(function(){
+        	loadmore.find('.text').text('Load More');
+        	loadmore.find('.is-loading').css('display', 'none');
         });
 			});
 		});
